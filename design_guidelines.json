@@ -1,0 +1,176 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "heading": "DM Serif Display, serif",
+        "body": "Manrope, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-normal tracking-tight leading-[0.95]",
+        "h2": "text-4xl md:text-5xl font-normal tracking-tight leading-tight",
+        "h3": "text-2xl md:text-3xl font-normal leading-snug",
+        "body_lg": "text-lg md:text-xl font-light leading-relaxed",
+        "body_base": "text-base font-normal leading-relaxed",
+        "caption": "text-sm font-medium tracking-wide uppercase text-muted-foreground"
+      },
+      "imports": [
+        "@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');"
+      ]
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "DEFAULT": "#3A5A40",
+          "foreground": "#FFFFFF",
+          "hover": "#2F4A33",
+          "active": "#243B28"
+        },
+        "secondary": {
+          "DEFAULT": "#D97757",
+          "foreground": "#FFFFFF",
+          "hover": "#C66545",
+          "active": "#B35434"
+        },
+        "background": {
+          "DEFAULT": "#F9F7F2",
+          "paper": "#FFFFFF",
+          "subtle": "#F2EFE9"
+        },
+        "foreground": {
+          "DEFAULT": "#1A1A1A",
+          "muted": "#5C5C5C",
+          "inverse": "#FFFFFF"
+        },
+        "accent": {
+          "DEFAULT": "#EAD2AC",
+          "foreground": "#3A5A40"
+        },
+        "border": {
+          "DEFAULT": "#E5E0D6",
+          "focus": "#3A5A40"
+        },
+        "status": {
+          "success": "#3A5A40",
+          "warning": "#E9C46A",
+          "error": "#D97757",
+          "info": "#588157"
+        }
+      },
+      "gradients": {
+        "hero": "linear-gradient(180deg, #F9F7F2 0%, #F2EFE9 100%)",
+        "card_hover": "linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12 lg:p-20",
+      "section_gap": "gap-12 md:gap-24",
+      "element_gap": "gap-4 md:gap-8"
+    },
+    "border_radius": {
+      "base": "rounded-xl",
+      "lg": "rounded-2xl",
+      "sm": "rounded-lg",
+      "pill": "rounded-full"
+    },
+    "shadows": {
+      "card": "0 4px 20px -2px rgba(58, 90, 64, 0.05)",
+      "card_hover": "0 10px 40px -10px rgba(58, 90, 64, 0.1)",
+      "float": "0 20px 50px -12px rgba(0, 0, 0, 0.15)"
+    }
+  },
+  "layout_strategies": {
+    "marketing": {
+      "grid_type": "Bento Grid (Mode A)",
+      "columns": "grid-cols-1 md:grid-cols-12",
+      "gap": "gap-8",
+      "rules": [
+        "Use asymmetry to create tension.",
+        "Never center text by default; use left alignment for organic flow.",
+        "Use 'The Tetris Grid' logic: Mix Hero (col-span-8), Square (col-span-4), and Tall (row-span-2) blocks."
+      ]
+    },
+    "dashboard": {
+      "grid_type": "High Density Grid (Mode B)",
+      "columns": "grid-cols-1 md:grid-cols-4",
+      "gap": "gap-6",
+      "rules": [
+        "Maximize screen real estate.",
+        "Use 'cardless' designs or subtle borders for data density.",
+        "Prioritize scanability over decoration."
+      ]
+    },
+    "mobile_driver": {
+      "type": "Stack with Bottom Nav",
+      "rules": [
+        "Touch targets must be min 44px.",
+        "Primary actions (Accept, Complete) must be fixed at bottom.",
+        "Map takes 60% of screen height in navigation mode."
+      ]
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 rounded-full font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/20",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/90 h-12 px-8 rounded-full font-medium transition-all duration-300",
+      "outline": "border-2 border-primary text-primary hover:bg-primary/5 h-12 px-8 rounded-full font-medium transition-all duration-300",
+      "ghost": "text-foreground hover:bg-muted h-10 px-4 rounded-lg font-medium transition-colors"
+    },
+    "cards": {
+      "base": "bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card_hover transition-all duration-300 group relative overflow-hidden",
+      "feature": "bg-background-subtle border-none rounded-3xl p-8"
+    },
+    "inputs": {
+      "base": "h-12 bg-white border border-border rounded-lg px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder:text-muted-foreground/50"
+    },
+    "navigation": {
+      "wrapper": "fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50 transition-all duration-300",
+      "link": "text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full"
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "hero_chef",
+        "url": "https://images.unsplash.com/photo-1731156679850-e73fbc21564c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjaGVmJTIwcGFja2luZyUyMGZvb2QlMjByZXN0YXVyYW50JTIwa2l0Y2hlbnxlbnwwfHx8fDE3NzAwMTA5MDN8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Chef preparing food in a restaurant kitchen",
+        "usage": "Hero section or Donor landing page"
+      },
+      {
+        "category": "volunteer_action",
+        "url": "https://images.unsplash.com/photo-1551386170-8b63c22c94e8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxjb21tdW5pdHklMjBtZWFsJTIwc2hlbHRlciUyMGhhcHB5JTIwcGVvcGxlJTIwZWF0aW5nfGVufDB8fHx8MTc3MDAxMDkxM3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Two volunteers wearing aprons",
+        "usage": "Volunteer/Driver section"
+      },
+      {
+        "category": "community_impact",
+        "url": "https://images.unsplash.com/photo-1586480192912-62b67465296f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxjb21tdW5pdHklMjBtZWFsJTIwc2hlbHRlciUyMGhhcHB5JTIwcGVvcGxlJTIwZWF0aW5nfGVufDB8fHx8MTc3MDAxMDkxM3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Community gathering for a meal",
+        "usage": "Impact statistics or Recipient dashboard"
+      },
+      {
+        "category": "logistics_vehicle",
+        "url": "https://images.unsplash.com/photo-1720017229043-c3922d38bf5c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwxfHx2b2x1bnRlZXIlMjBkcml2ZXIlMjBkZWxpdmVyaW5nJTIwZm9vZCUyMGJveCUyMGNhcnxlbnwwfHx8fDE3NzAwMTA5MDh8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Food delivery vehicle",
+        "usage": "Driver dashboard or logistics explanation"
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width: 1.5px; size: 20px;"
+    }
+  },
+  "universal_guidelines": [
+    "FILE EXTENSIONS: Use .js for all React components (NOT .tsx).",
+    "THEME: 'Organic & Earthy' - Use the specified color palette. Avoid generic 'tech blue'.",
+    "CONTRAST: Ensure all text meets APCA contrast standards. Use dark charcoal (#1A1A1A) for text on light backgrounds.",
+    "SPACING: Use generous padding (p-8, p-12) to create breathing room. Avoid cramped layouts.",
+    "ANIMATION: Add micro-interactions to all buttons and cards (hover:scale, hover:shadow). Use 'framer-motion' for page transitions if possible.",
+    "SHADOWS: Use colored shadows (shadow-primary/10) instead of pure black shadows for a warmer feel.",
+    "TESTING: Add 'data-testid' to all interactive elements (buttons, inputs, links).",
+    "NO GRADIENTS: Do not use dark gradients. Use solid colors or subtle noise textures.",
+    "GLASSMORPHISM: Use backdrop-blur-xl with bg-white/80 for overlays and sticky headers.",
+    "MOBILE FIRST: Ensure all layouts stack correctly on mobile. Images max-height 80vh on mobile."
+  ],
+  "instructions_to_main_agent": "You are building the 'Second Serve' food rescue app. Follow the 'Organic & Earthy' design system defined above. Use the provided image URLs for specific sections. Ensure the 'Driver Dashboard' is mobile-optimized with large touch targets. Use 'lucide-react' for icons. Create components in .js files. Implement the 'Bento Grid' for the landing page and 'High Density Grid' for dashboards."
+}
