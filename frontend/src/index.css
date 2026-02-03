@@ -48,3 +48,10 @@ code {
         @apply bg-background text-foreground;
     }
 }
+
+/* Hide Emergent badge */
+#emergent-badge {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
