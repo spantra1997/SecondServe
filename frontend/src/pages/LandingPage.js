@@ -101,8 +101,8 @@ const LandingPage = ({ user }) => {
             </div>
             <div className="md:col-span-5">
               <img
-                src="https://customer-assets.emergentagent.com/job_ed7d5ecc-437b-4e43-8a46-0c8ebcf9e50c/artifacts/nnuhrwpy_WhatsApp%20Image%202026-02-02%20at%2020.41.55.jpeg"
-                alt="Second Serve: From Kitchen to Shelter, With Love"
+                src="https://customer-assets.emergentagent.com/job_ed7d5ecc-437b-4e43-8a46-0c8ebcf9e50c/artifacts/r3gba2tp_WhatsApp%20Image%202026-02-02%20at%2021.00.57.jpeg"
+                alt="SecondServe: From Kitchen to Community Center, With Love"
                 className="rounded-2xl w-full h-auto shadow-float"
               />
             </div>
