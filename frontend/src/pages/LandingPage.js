@@ -101,8 +101,8 @@ const LandingPage = ({ user }) => {
             </div>
             <div className="md:col-span-5">
               <img
-                src="https://images.unsplash.com/photo-1731156679850-e73fbc21564c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjaGVmJTIwcGFja2luZyUyMGZvb2QlMjByZXN0YXVyYW50JTIwa2l0Y2hlbnxlbnwwfHx8fDE3NzAwMTA5MDN8MA&ixlib=rb-4.1.0&q=85"
-                alt="Chef preparing food"
+                src="https://images.unsplash.com/photo-1710092784814-4a6f158913b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxmb29kJTIwZG9uYXRpb24lMjB2b2x1bnRlZXJzJTIwaGVscGluZyUyMGNvbW11bml0eXxlbnwwfHx8fDE3NzAwOTMyNjJ8MA&ixlib=rb-4.1.0&q=85"
+                alt="Volunteers helping community with food donation"
                 className="rounded-2xl w-full h-auto shadow-float"
               />
             </div>
