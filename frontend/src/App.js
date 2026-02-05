@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import DonorDashboard from './pages/DonorDashboard';
 import RecipientDashboard from './pages/RecipientDashboard';
 import DriverDashboard from './pages/DriverDashboard';
+import AdminDashboard from './pages/AdminDashboard';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -52,6 +53,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <DriverDashboard user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard user={user} />
               </ProtectedRoute>
             }
           />
