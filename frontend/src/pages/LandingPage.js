@@ -44,9 +44,12 @@ const LandingPage = ({ user }) => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Leaf className="w-8 h-8 text-primary" />
-            <span className="font-heading text-2xl text-foreground">Second Serve</span>
+          <div className="flex items-center gap-3">
+            <Logo className="w-10 h-10" color="#3A5A40" />
+            <div>
+              <span className="font-heading text-2xl text-foreground block leading-none">Second Serve</span>
+              <span className="text-xs text-foreground-muted leading-none">Rescue Food. Feed Hope.</span>
+            </div>
           </div>
           <div className="flex items-center gap-6">
             {user ? (
