@@ -83,6 +83,7 @@ class Donation(BaseModel):
 class DonationCreate(BaseModel):
     food_type: str
     quantity: str
+    prepared_at: str
     expiry_date: str
     description: Optional[str] = None
     photo_url: Optional[str] = None
