@@ -72,7 +72,8 @@ class Donation(BaseModel):
     donor_name: str
     food_type: str
     quantity: str
-    expiry_date: str
+    prepared_at: str  # prepared date and time
+    expiry_date: str  # expiry date and time
     description: Optional[str] = None
     photo_url: Optional[str] = None
     location: dict
