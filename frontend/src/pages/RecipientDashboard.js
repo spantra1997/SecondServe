@@ -319,48 +319,82 @@ const RecipientDashboard = ({ user }) => {
 
         {/* Orders Tab */}
         {activeTab === 'orders' && (
-          <div className="space-y-4">
-            {orders.length === 0 ? (
-              <div className="text-center py-16">
-                <Clock className="w-16 h-16 text-foreground-muted mx-auto mb-4" />
-                <p className="text-base text-foreground-muted">No orders yet</p>
-              </div>
-            ) : (
-              orders.map((order) => (
-                <div key={order.id} data-testid={`order-card-${order.id}`} className="bg-white border border-border rounded-2xl p-6 shadow-card">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <p className="font-heading text-xl font-normal text-foreground mb-1">Order #{order.id.slice(0, 8)}</p>
-                      <p className={`text-sm font-medium uppercase tracking-wide ${getOrderStatusColor(order.status)}`}>
-                        {order.status}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-foreground-muted mb-1">Pickup Location</p>
-                      <p className="text-foreground font-medium">{order.pickup_location.address}, {order.pickup_location.city}</p>
-                    </div>
-                    <div>
-                      <p className="text-foreground-muted mb-1">Delivery Location</p>
-                      <p className="text-foreground font-medium">{order.delivery_location.address}, {order.delivery_location.city}</p>
-                    </div>
-                    {order.driver_name && (
-                      <div>
-                        <p className="text-foreground-muted mb-1">Driver</p>
-                        <p className="text-foreground font-medium">{order.driver_name}</p>
-                      </div>
-                    )}
-                    {order.dietary_preferences && order.dietary_preferences.length > 0 && (
-                      <div>
-                        <p className="text-foreground-muted mb-1">Dietary Preferences</p>
-                        <p className="text-foreground font-medium">{order.dietary_preferences.join(', ')}</p>
-                      </div>
-                    )}
-                  </div>
+          <div>
+            {/* Order Status Filter */}
+            <div className="flex gap-2 mb-6">
+              <button
+                onClick={() => setOrderTab('active')}
+                data-testid="active-orders-btn"
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  orderTab === 'active'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-background-subtle text-foreground hover:bg-muted'
+                }`}
+              >
+                Active Orders
+              </button>
+              <button
+                onClick={() => setOrderTab('completed')}
+                data-testid="completed-orders-btn"
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  orderTab === 'completed'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-background-subtle text-foreground hover:bg-muted'
+                }`}
+              >
+                Completed Orders
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {orders.filter(order => 
+                orderTab === 'completed' ? order.status === 'delivered' : order.status !== 'delivered'
+              ).length === 0 ? (
+                <div className="text-center py-16">
+                  <Clock className="w-16 h-16 text-foreground-muted mx-auto mb-4" />
+                  <p className="text-base text-foreground-muted">
+                    {orderTab === 'completed' ? 'No completed orders yet' : 'No active orders'}
+                  </p>
                 </div>
-              ))
-            )}
+              ) : (
+                orders.filter(order => 
+                  orderTab === 'completed' ? order.status === 'delivered' : order.status !== 'delivered'
+                ).map((order) => (
+                  <div key={order.id} data-testid={`order-card-${order.id}`} className="bg-white border border-border rounded-2xl p-6 shadow-card">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <p className="font-heading text-xl font-normal text-foreground mb-1">Order #{order.id.slice(0, 8)}</p>
+                        <p className={`text-sm font-medium uppercase tracking-wide ${getOrderStatusColor(order.status)}`}>
+                          {order.status}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <p className="text-foreground-muted mb-1">Pickup Location</p>
+                        <p className="text-foreground font-medium">{order.pickup_location.address}, {order.pickup_location.city}</p>
+                      </div>
+                      <div>
+                        <p className="text-foreground-muted mb-1">Delivery Location</p>
+                        <p className="text-foreground font-medium">{order.delivery_location.address}, {order.delivery_location.city}</p>
+                      </div>
+                      {order.driver_name && (
+                        <div>
+                          <p className="text-foreground-muted mb-1">Driver</p>
+                          <p className="text-foreground font-medium">{order.driver_name}</p>
+                        </div>
+                      )}
+                      {order.dietary_preferences && order.dietary_preferences.length > 0 && (
+                        <div>
+                          <p className="text-foreground-muted mb-1">Dietary Preferences</p>
+                          <p className="text-foreground font-medium">{order.dietary_preferences.join(', ')}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         )}
       </div>
