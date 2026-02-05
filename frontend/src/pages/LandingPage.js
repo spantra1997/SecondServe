@@ -203,9 +203,12 @@ const LandingPage = ({ user }) => {
       {/* Footer */}
       <footer className="py-12 px-6 md:px-12 bg-background-paper border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Leaf className="w-6 h-6 text-primary" />
-            <span className="font-heading text-xl text-foreground">Second Serve</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Logo className="w-8 h-8" color="#3A5A40" />
+            <div>
+              <span className="font-heading text-xl text-foreground block leading-none">Second Serve</span>
+              <span className="text-xs text-foreground-muted leading-none">Rescue Food. Feed Hope.</span>
+            </div>
           </div>
           <p className="text-sm text-foreground-muted">
             © 2024 Second Serve. Serving Meals. Serving Communities.
