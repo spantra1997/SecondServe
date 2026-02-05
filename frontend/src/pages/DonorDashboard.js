@@ -257,21 +257,28 @@ const DonorDashboard = ({ user }) => {
           ) : (
             donations.map((donation) => (
               <div key={donation.id} data-testid={`donation-card-${donation.id}`} className="bg-white border border-border rounded-2xl p-6 shadow-card card-hover">
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     {getStatusIcon(donation.status)}
                     <span className="text-xs font-medium uppercase tracking-wide text-foreground-muted">{donation.status}</span>
                   </div>
                 </div>
-                <h3 className="font-heading text-xl font-normal text-foreground mb-2">{donation.food_type}</h3>
+                <h3 className="font-heading text-xl font-normal text-foreground mb-3">{donation.food_type}</h3>
+                {/* Prominent Time Display */}
+                <div className="bg-background-subtle rounded-lg p-3 mb-4 space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-foreground-muted">Prepared:</span>
+                    <span className="text-foreground font-medium">{new Date(donation.prepared_at).toLocaleString()}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-foreground-muted">Expires:</span>
+                    <span className="text-status-error font-medium">{new Date(donation.expiry_date).toLocaleString()}</span>
+                  </div>
+                </div>
                 <div className="space-y-2 text-sm text-foreground-muted mb-4">
                   <div className="flex items-center gap-2">
                     <Package className="w-4 h-4" />
                     <span>Quantity: {donation.quantity}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>Expires: {donation.expiry_date}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
