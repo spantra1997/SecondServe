@@ -41,6 +41,7 @@ const LoginPage = ({ setUser }) => {
       if (role === 'donor') navigate('/donor-dashboard');
       else if (role === 'recipient') navigate('/recipient-dashboard');
       else if (role === 'driver') navigate('/driver-dashboard');
+      else if (role === 'admin') navigate('/admin-dashboard');
     } catch (err) {
       setError(err.response?.data?.detail || 'An error occurred. Please try again.');
     } finally {
