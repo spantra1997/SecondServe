@@ -202,6 +202,73 @@ async def login(login_data: UserLogin):
 async def get_me(current_user: User = Depends(get_current_user)):
     return current_user
 
+# ============= ADMIN ROUTES =============
+
+@api_router.get("/admin/donations", response_model=List[Donation])
+async def admin_get_all_donations(current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    donations = await db.donations.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    
+    for donation in donations:
+        if isinstance(donation['created_at'], str):
+            donation['created_at'] = datetime.fromisoformat(donation['created_at'])
+    
+    return donations
+
+@api_router.get("/admin/orders", response_model=List[Order])
+async def admin_get_all_orders(current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    orders = await db.orders.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    
+    for order in orders:
+        if isinstance(order['created_at'], str):
+            order['created_at'] = datetime.fromisoformat(order['created_at'])
+    
+    return orders
+
+@api_router.get("/admin/stats")
+async def admin_get_detailed_stats(current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    total_donations = await db.donations.count_documents({})
+    total_orders = await db.orders.count_documents({})
+    pending_orders = await db.orders.count_documents({"status": "pending"})
+    assigned_orders = await db.orders.count_documents({"status": "assigned"})
+    in_transit_orders = await db.orders.count_documents({"status": "in_transit"})
+    delivered_orders = await db.orders.count_documents({"status": "delivered"})
+    
+    total_users = await db.users.count_documents({})
+    donors = await db.users.count_documents({"role": "donor"})
+    recipients = await db.users.count_documents({"role": "recipient"})
+    drivers = await db.users.count_documents({"role": "driver"})
+    
+    return {
+        "donations": {
+            "total": total_donations,
+            "available": await db.donations.count_documents({"status": "available"}),
+            "claimed": await db.donations.count_documents({"status": "claimed"}),
+            "delivered": await db.donations.count_documents({"status": "delivered"})
+        },
+        "orders": {
+            "total": total_orders,
+            "pending": pending_orders,
+            "assigned": assigned_orders,
+            "in_transit": in_transit_orders,
+            "delivered": delivered_orders
+        },
+        "users": {
+            "total": total_users,
+            "donors": donors,
+            "recipients": recipients,
+            "drivers": drivers
+        }
+    }
+
 # ============= DONATION ROUTES =============
 
 @api_router.post("/donations", response_model=Donation)
