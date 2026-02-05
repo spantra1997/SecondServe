@@ -11,6 +11,7 @@ const RecipientDashboard = ({ user }) => {
   const [donations, setDonations] = useState([]);
   const [orders, setOrders] = useState([]);
   const [activeTab, setActiveTab] = useState('browse');
+  const [orderTab, setOrderTab] = useState('active'); // 'active' or 'completed'
   const [showRequestForm, setShowRequestForm] = useState(false);
   const [selectedDonation, setSelectedDonation] = useState(null);
   const [dietaryPreferences, setDietaryPreferences] = useState([]);
