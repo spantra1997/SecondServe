@@ -168,9 +168,20 @@ const DonorDashboard = ({ user }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Expiry Date</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">Prepared Date & Time</label>
                   <input
-                    type="date"
+                    type="datetime-local"
+                    data-testid="prepared-at-input"
+                    value={formData.prepared_at}
+                    onChange={(e) => setFormData({ ...formData, prepared_at: e.target.value })}
+                    className="h-12 bg-white border border-border rounded-lg px-4 w-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Expiry Date & Time</label>
+                  <input
+                    type="datetime-local"
                     data-testid="expiry-date-input"
                     value={formData.expiry_date}
                     onChange={(e) => setFormData({ ...formData, expiry_date: e.target.value })}
