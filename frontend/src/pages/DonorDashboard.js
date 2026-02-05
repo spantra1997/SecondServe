@@ -56,6 +56,7 @@ const DonorDashboard = ({ user }) => {
       setFormData({
         food_type: '',
         quantity: '',
+        prepared_at: '',
         expiry_date: '',
         description: '',
         photo_url: '',
