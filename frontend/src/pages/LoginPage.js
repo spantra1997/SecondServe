@@ -108,6 +108,7 @@ const LoginPage = ({ setUser }) => {
                     <option value="donor">Donor (Restaurant/Store)</option>
                     <option value="recipient">Recipient (Shelter/Individual)</option>
                     <option value="driver">Volunteer Driver</option>
+                    <option value="admin">Administrator</option>
                   </select>
                 </div>
                 <div>
