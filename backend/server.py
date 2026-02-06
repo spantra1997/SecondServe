@@ -72,7 +72,7 @@ class Donation(BaseModel):
     donor_name: str
     food_type: str
     quantity: str
-    prepared_at: str  # prepared date and time
+    prepared_at: Optional[str] = None  # prepared date and time (optional for backward compatibility)
     expiry_date: str  # expiry date and time
     description: Optional[str] = None
     photo_url: Optional[str] = None
