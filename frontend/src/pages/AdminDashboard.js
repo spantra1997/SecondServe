@@ -316,6 +316,68 @@ const AdminDashboard = ({ user }) => {
             </div>
           </div>
         )}
+
+        {/* Users Tab */}
+        {activeTab === 'users' && (
+          <div>
+            {/* Role Filter */}
+            <div className="flex gap-2 mb-6 flex-wrap">
+              {['all', 'donor', 'recipient', 'driver'].map((role) => (
+                <button
+                  key={role}
+                  onClick={() => setUserRoleFilter(role)}
+                  data-testid={`filter-${role}`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    userRoleFilter === role
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-background-subtle text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {role.charAt(0).toUpperCase() + role.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {users.filter(user => 
+                userRoleFilter === 'all' ? true : user.role === userRoleFilter
+              ).length === 0 ? (
+                <div className="col-span-full text-center py-16">
+                  <Users className="w-16 h-16 text-foreground-muted mx-auto mb-4" />
+                  <p className="text-base text-foreground-muted">No users found</p>
+                </div>
+              ) : (
+                users.filter(user => 
+                  userRoleFilter === 'all' ? true : user.role === userRoleFilter
+                ).map((user) => (
+                  <div key={user.id} data-testid={`user-card-${user.id}`} className="bg-white border border-border rounded-2xl p-6 shadow-card">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="font-heading text-lg font-normal text-foreground mb-1">{user.name}</h3>
+                        <p className="text-sm text-foreground-muted mb-2">{user.email}</p>
+                        <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                          user.role === 'donor' ? 'bg-primary/10 text-primary' :
+                          user.role === 'recipient' ? 'bg-secondary/10 text-secondary' :
+                          'bg-status-info/10 text-status-info'
+                        }`}>
+                          {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                        </div>
+                      </div>
+                    </div>
+                    {user.phone && (
+                      <div className="text-sm text-foreground-muted">
+                        <p>Phone: {user.phone}</p>
+                      </div>
+                    )}
+                    <div className="mt-3 text-xs text-foreground-muted">
+                      Joined: {new Date(user.created_at).toLocaleDateString()}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
