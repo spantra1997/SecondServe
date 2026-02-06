@@ -27,13 +27,15 @@ const AdminDashboard = ({ user }) => {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const [donationsRes, ordersRes, statsRes] = await Promise.all([
+      const [donationsRes, ordersRes, usersRes, statsRes] = await Promise.all([
         axios.get(`${API}/admin/donations`, { headers: { Authorization: `Bearer ${token}` } }),
         axios.get(`${API}/admin/orders`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API}/admin/users`, { headers: { Authorization: `Bearer ${token}` } }),
         axios.get(`${API}/admin/stats`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setDonations(donationsRes.data);
       setOrders(ordersRes.data);
+      setUsers(usersRes.data);
       setStats(statsRes.data);
     } catch (error) {
       console.error('Error fetching admin data:', error);
