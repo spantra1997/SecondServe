@@ -11,9 +11,11 @@ const AdminDashboard = ({ user }) => {
   const navigate = useNavigate();
   const [donations, setDonations] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [users, setUsers] = useState([]);
   const [stats, setStats] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [userRoleFilter, setUserRoleFilter] = useState('all');
 
   useEffect(() => {
     if (user && user.role !== 'admin') {
