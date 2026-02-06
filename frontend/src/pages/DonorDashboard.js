@@ -97,9 +97,8 @@ const DonorDashboard = ({ user }) => {
       {/* Navigation */}
       <nav className="bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Leaf className="w-8 h-8 text-primary" />
-            <span className="font-heading text-2xl text-foreground">Second Serve</span>
+          <div className="flex items-center gap-3">
+            <Logo className="h-12 w-auto" />
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
