@@ -88,38 +88,66 @@ const AdminDashboard = ({ user }) => {
         {/* Stats Overview */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div data-testid="admin-stat-donations" className="bg-white border border-border rounded-2xl p-6 shadow-card">
+            <button
+              onClick={() => {
+                setActiveTab('donations');
+                setStatusFilter('all');
+              }}
+              data-testid="admin-stat-donations"
+              className="bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer text-left"
+            >
               <Package className="w-10 h-10 text-primary mb-3" />
               <div className="font-heading text-3xl font-normal text-foreground mb-1">{stats.donations.total}</div>
               <p className="text-sm text-foreground-muted">Total Donations</p>
               <div className="mt-3 text-xs text-foreground-muted">
                 <span className="text-status-success">✓ {stats.donations.delivered} Delivered</span>
               </div>
-            </div>
-            <div data-testid="admin-stat-orders" className="bg-white border border-border rounded-2xl p-6 shadow-card">
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('orders');
+                setStatusFilter('all');
+              }}
+              data-testid="admin-stat-orders"
+              className="bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer text-left"
+            >
               <ShoppingCart className="w-10 h-10 text-secondary mb-3" />
               <div className="font-heading text-3xl font-normal text-foreground mb-1">{stats.orders.total}</div>
               <p className="text-sm text-foreground-muted">Total Orders</p>
               <div className="mt-3 text-xs text-foreground-muted">
                 <span className="text-status-warning">⏳ {stats.orders.pending} Pending</span>
               </div>
-            </div>
-            <div data-testid="admin-stat-deliveries" className="bg-white border border-border rounded-2xl p-6 shadow-card">
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('orders');
+                setStatusFilter('in_transit');
+              }}
+              data-testid="admin-stat-deliveries"
+              className="bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer text-left"
+            >
               <Truck className="w-10 h-10 text-primary mb-3" />
               <div className="font-heading text-3xl font-normal text-foreground mb-1">{stats.orders.in_transit}</div>
               <p className="text-sm text-foreground-muted">In Transit</p>
               <div className="mt-3 text-xs text-foreground-muted">
                 <span className="text-primary">🚚 Active Deliveries</span>
               </div>
-            </div>
-            <div data-testid="admin-stat-users" className="bg-white border border-border rounded-2xl p-6 shadow-card">
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('orders');
+                setStatusFilter('pending');
+              }}
+              data-testid="admin-stat-users"
+              className="bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer text-left"
+            >
               <Users className="w-10 h-10 text-status-success mb-3" />
               <div className="font-heading text-3xl font-normal text-foreground mb-1">{stats.users.total}</div>
               <p className="text-sm text-foreground-muted">Total Users</p>
               <div className="mt-3 text-xs text-foreground-muted">
                 <span>{stats.users.donors}D · {stats.users.recipients}R · {stats.users.drivers}Dr</span>
               </div>
-            </div>
+            </button>
           </div>
         )}
 
