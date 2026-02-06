@@ -139,8 +139,8 @@ const AdminDashboard = ({ user }) => {
             </button>
             <button
               onClick={() => {
-                setActiveTab('orders');
-                setStatusFilter('pending');
+                setActiveTab('users');
+                setUserRoleFilter('all');
               }}
               data-testid="admin-stat-users"
               className="bg-white border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer text-left"
