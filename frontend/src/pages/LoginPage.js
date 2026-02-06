@@ -56,8 +56,7 @@ const LoginPage = ({ setUser }) => {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Leaf className="w-10 h-10 text-primary" />
-            <span className="font-heading text-3xl text-foreground">Second Serve</span>
+            <Logo className="h-16 w-auto" />
           </div>
           <p className="text-sm text-foreground-muted">Serving Meals. Serving Communities.</p>
         </div>
