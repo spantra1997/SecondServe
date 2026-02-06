@@ -282,10 +282,12 @@ const RecipientDashboard = ({ user }) => {
                   <p className="text-sm text-foreground-muted mb-3">By {donation.donor_name}</p>
                   {/* Prominent Time Display */}
                   <div className="bg-background-subtle rounded-lg p-3 mb-4 space-y-2">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-foreground-muted">Prepared:</span>
-                      <span className="text-foreground font-medium">{new Date(donation.prepared_at).toLocaleString()}</span>
-                    </div>
+                    {donation.prepared_at && (
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-foreground-muted">Prepared:</span>
+                        <span className="text-foreground font-medium">{new Date(donation.prepared_at).toLocaleString()}</span>
+                      </div>
+                    )}
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-foreground-muted">Expires:</span>
                       <span className="text-status-error font-medium">{new Date(donation.expiry_date).toLocaleString()}</span>
