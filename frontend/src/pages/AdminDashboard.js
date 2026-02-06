@@ -187,6 +187,21 @@ const AdminDashboard = ({ user }) => {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
             )}
           </button>
+          <button
+            onClick={() => setActiveTab('users')}
+            data-testid="users-tab"
+            className={`pb-4 px-2 font-medium transition-colors relative ${
+              activeTab === 'users' ? 'text-primary' : 'text-foreground-muted hover:text-foreground'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5" />
+              All Users
+            </div>
+            {activeTab === 'users' && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+            )}
+          </button>
         </div>
 
         {/* Donations Tab */}
