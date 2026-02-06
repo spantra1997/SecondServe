@@ -269,6 +269,19 @@ async def admin_get_detailed_stats(current_user: User = Depends(get_current_user
         }
     }
 
+@api_router.get("/admin/users", response_model=List[User])
+async def admin_get_all_users(current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    users = await db.users.find({"role": {"$ne": "admin"}}, {"_id": 0, "password": 0}).sort("created_at", -1).to_list(1000)
+    
+    for user in users:
+        if isinstance(user['created_at'], str):
+            user['created_at'] = datetime.fromisoformat(user['created_at'])
+    
+    return users
+
 # ============= DONATION ROUTES =============
 
 @api_router.post("/donations", response_model=Donation)
